@@ -3,8 +3,10 @@ package Assignment_1
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
-object Question_1 extends App{
+object Question_1{
+  def main(args: Array[String]): Unit = {
 
+  }
     Logger.getLogger("org").setLevel(Level.ERROR)
 
     def x(header: Boolean,inferSchema: Boolean ,path:String):DataFrame ={
@@ -22,8 +24,8 @@ object Question_1 extends App{
     {
       val spark = SparkSession.builder().master("local").appName("Question1").getOrCreate()
       val df2 = spark.read
-        .option("header", "true")
-        .option("inferSchema", "true")
+        .option("header", header)
+        .option("inferSchema", inferSchema)
         .csv(path)
       return df2
     }
